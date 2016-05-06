@@ -34,7 +34,7 @@ class MainMiniState extends FlxState
 		falling = new FallingObjects(0, 0, 1, food);
 			add(falling);
 			
-		ui = new UI(0, 0);
+		ui = new UI(0, 0, "minigame");
 			add(ui);
 			add(ui.showScore);
 			add(ui.showTime);

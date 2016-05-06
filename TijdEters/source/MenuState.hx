@@ -19,6 +19,12 @@ class MenuState extends FlxState
 		
 		add(new FlxButton(155, 110, "Main mini game", goMainMini));
 		add(new FlxButton(155, 130, "Mideavle mini game", GoMidEavle));
+		add(new FlxButton(155, 150, "Mideavle mini game", GoMain));
+	}
+	
+	public function GoMain() 
+	{
+		FlxG.switchState(new MainGame());
 	}
 	
 	function goMainMini() 
