@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -22,7 +23,7 @@ class MidEavleMini extends FlxState
 	{
 		super.create();
 		
-		player = new Player(300, 400, 2);
+		player = new Player(300, 400, 2, 50);
 			add(player);
 			add(player.player);
 			add(Player.basket);
@@ -30,7 +31,7 @@ class MidEavleMini extends FlxState
 		var food = new FlxTypedGroup<Food>();
 			add(food);	
 			
-		falling = new FallingObjects(0, 0, 2, food);
+		falling = new FallingObjects(0, 0, 2, food, 150);
 			add(falling);
 			
 		ui = new UI(0, 0, "minigame");
@@ -41,6 +42,11 @@ class MidEavleMini extends FlxState
 	
 	override public function update(elapsed:Float):Void 
 	{
+		if (Player.timer == 0)
+		{
+			FlxG.switchState(new MiniGameEnd());
+		}
+		
 		super.update(elapsed);
 	}
 	

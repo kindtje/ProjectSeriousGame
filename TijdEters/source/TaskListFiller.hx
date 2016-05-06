@@ -8,21 +8,22 @@ import flixel.FlxObject;
 class TaskListFiller extends FlxObject
 {
 
-	public function new() 
+	public function new(start : Bool) 
 	{
 		super();
-		MainGame.taskList.push("Ontbijten");
-		MainGame.taskList.push("Huiswerk Maken");
-		MainGame.taskList.push("Zelf Verzorging");
-		MainGame.taskList.push("Spelen");
-		MainGame.taskList.push("Opruimen");
-		
-		MainGame.timeList.push(15);
-		MainGame.timeList.push(30);
-		MainGame.timeList.push(60);
-		MainGame.timeList.push(120);
-		MainGame.timeList.push(180);
-		
+		if(start){
+			MainGame.taskList.push("Ontbijten");
+			MainGame.taskList.push("Huiswerk Maken");
+			MainGame.taskList.push("Zelf Verzorging");
+			MainGame.taskList.push("Spelen");
+			MainGame.taskList.push("Opruimen");
+			
+			MainGame.timeList.push(15);
+			MainGame.timeList.push(30);
+			MainGame.timeList.push(60);
+			MainGame.timeList.push(120);
+			MainGame.timeList.push(180);
+		}
 		
 	}
 	
@@ -30,6 +31,13 @@ class TaskListFiller extends FlxObject
 	{
 		if ((MainGame.dagDeel == "s'Middags" && MainGame.hour < 2) || (MainGame.dagDeel == "s'Ochtends" && MainGame.hour > 9))
 		{
+			for (i in 0...MainGame.taskList.length)
+			{
+				if (MainGame.taskList[i] == "ontbijten")
+				{
+					MainGame.taskList.remove(MainGame.taskList[i]);
+				}
+			}
 			MainGame.taskList.push("Lunchen");
 		}
 		

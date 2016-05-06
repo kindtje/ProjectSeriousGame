@@ -24,10 +24,10 @@ class MainGame extends FlxState
 	var clickedButton : Int;
 	
 	
-	public function new() 
+	public function new(newStart : Bool) 
 	{
 		super();
-		var filler : TaskListFiller = new TaskListFiller();
+		var filler : TaskListFiller = new TaskListFiller(newStart);
 	}
 	
 	override public function create():Void 
@@ -36,6 +36,7 @@ class MainGame extends FlxState
 		
 		ui = new UI(0, 0, "maingame");
 		add(ui);
+		//tijdelijke klok
 		add(ui.tempTime);
 		
 		dropDownButton = new FlxButton(50, 20, "Activiteiten", dropDown);
@@ -77,9 +78,6 @@ class MainGame extends FlxState
 	{
 		clickedButton = task;
 		
-		/*taskList.remove(taskList[task]);
-		remove(buttonList[task]);*/
-		
 		for (i in 0...timeList.length)
 		{
 			var button : FlxButton = new FlxButton(FlxG.stage.stageWidth / 2, i * 50 + 100, Std.string(timeList[i]), timeSet.bind(i));
@@ -88,22 +86,19 @@ class MainGame extends FlxState
 				buttonTimeList.push(button);
 				add(button);
 		}
-		/*for (i in 0...taskList.length)
-		{
-			for (j in 0...buttonList.length)
-			{
-				if (taskList[i] == button.text && buttonList[j].text == button.text)
-				{
-					taskList.remove(taskList[i]);
-					remove(buttonList[j]);
-				}
-			}
-		}*/
 	}
 	
 	public function timeSet(time:Int)
 	{
 		down = true;
+		if (taskList[clickedButton] == "Ontbijten" || taskList[clickedButton] == "Lunchen" || taskList[clickedButton] == "Avond Eten")
+		{
+			startEatingMini(timeList[time]);
+		}
+		else if (taskList[clickedButton] == "slapen")
+		{
+			startSleepingMini();
+		}
 		taskList.remove(taskList[clickedButton]);
 		remove(buttonList[clickedButton]);
 		dropDown();
@@ -115,6 +110,26 @@ class MainGame extends FlxState
 			remove(buttonTimeList[i]);
 		}
 		
+	}
+	
+	public function startSleepingMini() 
+	{
+		var i : Int = Std.random(3);
+		
+		switch(i)
+		{
+			case 0:
+				FlxG.switchState(new MidEavleMini());
+			case 1:
+				FlxG.switchState(new MenuState());
+			case 2:
+				FlxG.switchState(new MenuState());
+		}
+	}
+	
+	public function startEatingMini(time : Int) 
+	{
+		FlxG.switchState(new MainMiniState(time));
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -136,7 +151,7 @@ class MainGame extends FlxState
 			minute -= 180;
 		}
 		
-		if (hour == 12)
+		if (hour == 13)
 		{
 			if (dagDeel == "s'Ochtends")
 			{
@@ -146,10 +161,10 @@ class MainGame extends FlxState
 			{
 				dagDeel = "s'Ochtends";
 			}
-			hour = 0;
+			hour = 1;
 		}
 		// don't touch the above
-		
+		var updateFiller : TaskListFiller = new TaskListFiller(false);
 		
 		super.update(elapsed);
 	}

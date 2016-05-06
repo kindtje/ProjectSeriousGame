@@ -15,11 +15,11 @@ class Food extends FlxSprite
 	var typeObject : Int;
 	var typeGame : Int;
 	
-	public function new(X:Float, Y:Float, foodType : Int, gameType:Int) 
+	public function new(X:Float, Y:Float, foodType : Int, gameType:Int, speed : Int) 
 	{
 		super(X, Y);
 		
-		this.velocity.y = 150;
+		this.velocity.y = speed;
 		
 		typeObject = foodType;
 		typeGame = gameType;

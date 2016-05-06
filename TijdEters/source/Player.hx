@@ -22,7 +22,7 @@ class Player extends FlxObject
 	var playerSpeed : Int = 300;
 	
 	
-	public function new(X:Float, Y:Float, TypeMov:Int) 
+	public function new(X:Float, Y:Float, TypeMov:Int, time:Int) 
 	{
 		super(X, Y);
 		player = new FlxSprite(X, Y);
@@ -37,14 +37,7 @@ class Player extends FlxObject
 		posY = player.y + player.height;
 		
 		typeMove = TypeMov;
-		
-		switch typeMove
-		{
-			case 1:
-				timer = 50.0;
-			case 2:
-				timer = 180.0;
-		}
+		timer = time;
 		
 	}
 	

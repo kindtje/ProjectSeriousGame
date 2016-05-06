@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -12,10 +13,25 @@ class MainMiniState extends FlxState
 	public var player : Player;
 	public var falling : FallingObjects;
 	public var ui : UI;
+	var tempTime: Int;
+	var foodSpeed : Int;
 	
-	public function new() 
+	public function new(time : Int) 
 	{
 		super();
+		tempTime = time;
+		if (tempTime <= 30)
+		{
+			foodSpeed = 300;
+		}
+		else if (tempTime == 60)
+		{
+			foodSpeed = 200;
+		}
+		else
+		{
+			foodSpeed = 150;
+		}
 		
 	}
 	
@@ -23,7 +39,7 @@ class MainMiniState extends FlxState
 	{
 		super.create();
 		
-		player = new Player(300, 400, 1);
+		player = new Player(300, 400, 1, tempTime);
 			add(player);
 			add(player.player);
 			add(Player.basket);
@@ -31,7 +47,7 @@ class MainMiniState extends FlxState
 		var food = new FlxTypedGroup<Food>();
 			add(food);	
 			
-		falling = new FallingObjects(0, 0, 1, food);
+		falling = new FallingObjects(0, 0, 1, food, foodSpeed);
 			add(falling);
 			
 		ui = new UI(0, 0, "minigame");
@@ -43,6 +59,11 @@ class MainMiniState extends FlxState
 	
 	override public function update(elapsed:Float):Void 
 	{
+		if (Player.timer == 0)
+		{
+			FlxG.switchState(new MiniGameEnd());
+		}
+		
 		super.update(elapsed);
 	}
 	

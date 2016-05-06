@@ -17,19 +17,20 @@ class MenuState extends FlxState
 		add(new FlxText(150, 90, 120, "Tijd Eters", 10, true));
 		FlxG.camera.bgColor = 0xFFBADA55;
 		
-		add(new FlxButton(155, 110, "Main mini game", goMainMini));
-		add(new FlxButton(155, 130, "Mideavle mini game", GoMidEavle));
-		add(new FlxButton(155, 150, "Mideavle mini game", GoMain));
+		add(new FlxButton(155, 110, "Main game", GoMain));
+		add(new FlxButton(155, 130, "Main mini game", goMainMini));
+		add(new FlxButton(155, 150, "Mideavle mini game", GoMidEavle));
+		
 	}
 	
 	public function GoMain() 
 	{
-		FlxG.switchState(new MainGame());
+		FlxG.switchState(new MainGame(true));
 	}
 	
 	function goMainMini() 
 	{
-		FlxG.switchState(new MainMiniState());
+		FlxG.switchState(new MainMiniState(50));
 	}
 	
 	function GoMidEavle()
