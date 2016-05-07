@@ -36,6 +36,13 @@ class MainGame extends FlxState
 		
 		ui = new UI(0, 0, "maingame");
 		add(ui);
+		/*add(ui.maxSleep);
+		add(ui.maxHunger);
+		add(ui.sleep);
+		add(ui.hunger);
+		add(ui._hunger);
+		add(ui._sleep);*/
+	
 		//tijdelijke klok
 		add(ui.tempTime);
 		

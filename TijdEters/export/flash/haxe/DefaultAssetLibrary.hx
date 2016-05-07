@@ -61,6 +61,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -71,6 +75,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/images/apple.png", __ASSET__assets_images_apple_png);
+		type.set ("assets/images/apple.png", AssetType.IMAGE);
+		className.set ("assets/images/bomb.png", __ASSET__assets_images_bomb_png);
+		type.set ("assets/images/bomb.png", AssetType.IMAGE);
+		className.set ("assets/images/chicken.png", __ASSET__assets_images_chicken_png);
+		type.set ("assets/images/chicken.png", AssetType.IMAGE);
+		className.set ("assets/images/cow.png", __ASSET__assets_images_cow_png);
+		type.set ("assets/images/cow.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		className.set ("assets/images/temp_bomb.png", __ASSET__assets_images_temp_bomb_png);
@@ -104,6 +116,22 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/apple.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/bomb.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/chicken.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/cow.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		
@@ -172,6 +200,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/images/apple.png", __ASSET__assets_images_apple_png);
+		type.set ("assets/images/apple.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/bomb.png", __ASSET__assets_images_bomb_png);
+		type.set ("assets/images/bomb.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/chicken.png", __ASSET__assets_images_chicken_png);
+		type.set ("assets/images/chicken.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/cow.png", __ASSET__assets_images_cow_png);
+		type.set ("assets/images/cow.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
@@ -854,6 +894,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_apple_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_bomb_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_chicken_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_cow_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_temp_bomb_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_temp_char_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -880,6 +924,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
 
@@ -893,6 +941,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.Bytes {}
+@:image("assets/images/apple.png") #if display private #end class __ASSET__assets_images_apple_png extends lime.graphics.Image {}
+@:image("assets/images/bomb.png") #if display private #end class __ASSET__assets_images_bomb_png extends lime.graphics.Image {}
+@:image("assets/images/chicken.png") #if display private #end class __ASSET__assets_images_chicken_png extends lime.graphics.Image {}
+@:image("assets/images/cow.png") #if display private #end class __ASSET__assets_images_cow_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.Bytes {}
 @:image("assets/images/temp_bomb.png") #if display private #end class __ASSET__assets_images_temp_bomb_png extends lime.graphics.Image {}
 @:image("assets/images/temp_char.png") #if display private #end class __ASSET__assets_images_temp_char_png extends lime.graphics.Image {}

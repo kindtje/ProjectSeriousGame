@@ -14,6 +14,8 @@ class MidEavleMini extends FlxState
 	public var falling : FallingObjects;
 	public var ui : UI;
 	
+	public static var dead : Bool = false;
+	
 	public function new() 
 	{
 		super();
@@ -42,7 +44,7 @@ class MidEavleMini extends FlxState
 	
 	override public function update(elapsed:Float):Void 
 	{
-		if (Player.timer == 0)
+		if (Player.timer == 0 || dead)
 		{
 			FlxG.switchState(new MiniGameEnd());
 		}

@@ -21,6 +21,8 @@ class FallingObjects extends FlxObject
 	var typeGame : Int;
 	var speedFood : Int;
 	
+	var lastSpot : Float;
+	
 	public function new(X:Float=0, Y:Float= 0, gameType :Int, fallingObject :FlxTypedGroup<Food>, foodSpeed : Int ) 
 	{
 		super(X, Y);
@@ -48,7 +50,14 @@ class FallingObjects extends FlxObject
 		if (interval > maxInterval)
 		{
 			var tempChance : Int = Std.random(chance);
+		
+			
 			var spot : Int = Std.random(amountRows) - 1;
+			
+			if (lastSpot == fallingSpots[spot])
+			{
+				spot = Std.random(amountRows) - 1;
+			}
 			
 			var type : Int;
 			
@@ -65,7 +74,7 @@ class FallingObjects extends FlxObject
 			
 			var newObject = new Food(fallingSpots[spot], -10, type, typeGame, speedFood);
 				fallingFood.add(newObject);
-			
+			lastSpot = fallingSpots[spot];
 				maxInterval -= 0.02;
 			interval = 0;
 		}

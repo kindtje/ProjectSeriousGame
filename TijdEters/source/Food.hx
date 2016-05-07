@@ -23,19 +23,44 @@ class Food extends FlxSprite
 		
 		typeObject = foodType;
 		typeGame = gameType;
-		
-		switch (foodType)
+		switch (gameType)
 		{
 			case 1:
-				
-				this.loadGraphic("assets/images/temp_food.png");
-				this.solid = true;
-				this.updateHitbox();
-				
+				switch (foodType)
+				{
+					case 1:
+						
+						this.loadGraphic("assets/images/apple.png");
+						this.scale.x = 0.05;
+						this.scale.y = 0.05;
+						this.solid = true;
+						this.updateHitbox();
+						
+					case 2:
+						this.loadGraphic("assets/images/bomb.png");
+						this.scale.x = 0.2;
+						this.scale.y = 0.2;
+						this.solid = true;
+						this.updateHitbox();
+				}
 			case 2:
-				this.loadGraphic("assets/images/temp_bomb.png");
-				this.solid = true;
-				this.updateHitbox();
+				switch (foodType)
+				{
+					case 1:
+						
+						this.loadGraphic("assets/images/chicken.png");
+						this.scale.x = 0.05;
+						this.scale.y = 0.05;
+						this.solid = true;
+						this.updateHitbox();
+						
+					case 2:
+						this.loadGraphic("assets/images/cow.png");
+						this.scale.x = 0.7;
+						this.scale.y = 0.7;
+						this.solid = true;
+						this.updateHitbox();
+				}
 		}
 		
 	}
@@ -68,13 +93,21 @@ class Food extends FlxSprite
 	
 	public function badCol(food : FlxObject, player:FlxObject) 
 	{
-		Player.timer -= 5.0;
-		this.destroy();
+		if (typeObject == 1)
+		{
+			Player.timer -= 5.0;
+			this.destroy();
+		}
+		else
+		{
+			MidEavleMini.dead = true;
+		}
 	}
 	
 	public function goodCol(food : FlxObject, player:FlxObject) 
 	{
 		Player.score++;
+		UI.hungerInt -= 0.5;
 		this.destroy();
 	}
 	
