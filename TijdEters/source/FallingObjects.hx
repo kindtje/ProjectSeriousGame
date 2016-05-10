@@ -14,7 +14,7 @@ class FallingObjects extends FlxObject
 	var fallingSpots : Array<Float> = new Array<Float>();
 	var fallingFood : FlxTypedGroup<Food>;
 	
-	var amountRows : Int = 5;
+	var amountRows : Int = 7;
 	var interval : Float = 0;
 	var maxInterval : Float = 2;
 	var chance : Int = 55;
@@ -38,6 +38,8 @@ class FallingObjects extends FlxObject
 		for (place in 1...(amountRows + 1))
 		{
 			var spot = place * rowWidth + rowPlace;
+			trace(spot);
+			
 			fallingSpots.push(spot);
 		}
 		

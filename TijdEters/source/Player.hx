@@ -29,8 +29,11 @@ class Player extends FlxObject
 		player.loadGraphic("assets/images/temp_char.png");
 		player.solid = false;
 		
-		basket = new FlxSprite(X - 10, y - 20);
-		basket.loadGraphic("assets/images/temp_mand.png");
+		basket = new FlxSprite(X - 15, y - 20);
+		basket.loadGraphic("assets/images/basket.png");
+		basket.scale.x = 0.1;
+		basket.scale.y = 0.1;
+	
 		basket.solid = true;
 		basket.updateHitbox();
 		
@@ -45,7 +48,7 @@ class Player extends FlxObject
 	{
 		
 		player.x = this.x;
-		basket.x = this.x - 10;
+		basket.x = this.x - 15;
 		
 		//Movement type of player
 		if (typeMove == 1) 
@@ -112,7 +115,7 @@ class Player extends FlxObject
 			this.x = (basket.width - player.width) / 2;
 		}
 		
-		else if (this.x > FlxG.stage.stageWidth + 10 - basket.width)
+		else if (this.x > FlxG.stage.stageWidth + 20 - basket.width)
 		{
 			this.x = FlxG.stage.stageWidth - basket.width + ((basket.width - player.width) / 2);
 		}

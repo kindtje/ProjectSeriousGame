@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -15,6 +16,7 @@ class MainMiniState extends FlxState
 	public var ui : UI;
 	var tempTime: Int;
 	var foodSpeed : Int;
+	
 	
 	public function new(time : Int) 
 	{
@@ -46,6 +48,7 @@ class MainMiniState extends FlxState
 		
 		var food = new FlxTypedGroup<Food>();
 			add(food);	
+		
 			
 		falling = new FallingObjects(0, 0, 1, food, foodSpeed);
 			add(falling);

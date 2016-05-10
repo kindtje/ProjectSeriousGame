@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
 
 /**
  * ...
@@ -20,46 +21,81 @@ class Food extends FlxSprite
 		super(X, Y);
 		
 		this.velocity.y = speed;
-		
 		typeObject = foodType;
 		typeGame = gameType;
+		
+		foodObject = new FlxSprite(-1000, -1000);
+		
 		switch (gameType)
 		{
 			case 1:
 				switch (foodType)
 				{
 					case 1:
+						var randomFood : Int = Std.random(4) + 1;
 						
-						this.loadGraphic("assets/images/apple.png");
-						this.scale.x = 0.05;
-						this.scale.y = 0.05;
-						this.solid = true;
-						this.updateHitbox();
+						switch(randomFood)
+						{
+							case 1:
+								this.loadGraphic("assets/images/apple.png");
+								this.scale.x = 0.1;
+								this.scale.y = 0.1;
+								this.solid = true;
+								this.updateHitbox();
+							
+							case 2:
+								this.loadGraphic("assets/images/watermelon.png");
+								this.scale.x = 0.15;
+								this.scale.y = 0.15;
+								this.solid = true;
+								this.updateHitbox();
+								
+							case 3:
+								this.loadGraphic("assets/images/broccoli.png");
+								this.scale.x = 0.08;
+								this.scale.y = 0.08;
+								this.solid = true;
+								this.updateHitbox();
+								
+							case 4:
+								this.loadGraphic("assets/images/hamburger.png");
+								this.scale.x = 0.15;
+								this.scale.y = 0.15;
+								this.solid = true;
+								this.updateHitbox();
+						
+						}
+						
 						
 					case 2:
 						this.loadGraphic("assets/images/bomb.png");
-						this.scale.x = 0.2;
-						this.scale.y = 0.2;
+						this.scale.x = 0.1;
+						this.scale.y = 0.1;
 						this.solid = true;
 						this.updateHitbox();
+						
 				}
+				
+				
 			case 2:
 				switch (foodType)
 				{
 					case 1:
 						
 						this.loadGraphic("assets/images/chicken.png");
-						this.scale.x = 0.05;
-						this.scale.y = 0.05;
+						this.scale.x = 0.1;
+						this.scale.y = 0.1;
 						this.solid = true;
 						this.updateHitbox();
 						
+						
 					case 2:
 						this.loadGraphic("assets/images/cow.png");
-						this.scale.x = 0.7;
-						this.scale.y = 0.7;
+						this.scale.x = 0.2;
+						this.scale.y = 0.2;
 						this.solid = true;
 						this.updateHitbox();
+						
 				}
 		}
 		
@@ -67,6 +103,8 @@ class Food extends FlxSprite
 	
 	override public function update(elapsed:Float):Void 
 	{
+
+		
 		switch(typeObject) 
 		{
 			case 1:
@@ -75,7 +113,7 @@ class Food extends FlxSprite
 			case 2:
 				FlxG.overlap(this, Player.basket, badCol);
 				
-				if (this.y > FlxG.stage.stageHeight && !Player.duck && typeGame == 1)
+				if (this.y > 480 && !Player.duck && typeGame == 1)
 				{
 					Player.score--;
 					this.destroy();
@@ -83,7 +121,7 @@ class Food extends FlxSprite
 
 		}
 		
-		if (this.y > FlxG.stage.stageHeight)
+		if (this.y > 480)
 			{
 				this.destroy();
 			}
@@ -93,7 +131,7 @@ class Food extends FlxSprite
 	
 	public function badCol(food : FlxObject, player:FlxObject) 
 	{
-		if (typeObject == 1)
+		if (typeObject == 2)
 		{
 			Player.timer -= 5.0;
 			this.destroy();

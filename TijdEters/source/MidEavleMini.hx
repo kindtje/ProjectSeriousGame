@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -32,6 +33,7 @@ class MidEavleMini extends FlxState
 		
 		var food = new FlxTypedGroup<Food>();
 			add(food);	
+
 			
 		falling = new FallingObjects(0, 0, 2, food, 150);
 			add(falling);

@@ -38,7 +38,15 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/basket.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/bomb.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/broccoli.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -47,6 +55,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/cow.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/hamburger.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -67,6 +79,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/temp_mand.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/watermelon.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -159,7 +175,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "247",
+			build: "314",
 			company: "HaxeFlixel",
 			file: "TijdEters",
 			fps: 60,
