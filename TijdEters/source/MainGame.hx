@@ -2,7 +2,9 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxState;
+import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.ui.FlxButton;
+import openfl.display.Bitmap;
 import openfl.events.MouseEvent;
 
 /**
@@ -11,17 +13,17 @@ import openfl.events.MouseEvent;
  */
 class MainGame extends FlxState
 {
-	public static var dagDeel : String = "s'Ochtends";
+	
 	public static var taskList : Array<String> = new Array<String>();
 	public static var buttonList : Array<FlxButton> = new Array<FlxButton>();
 	public static var timeList : Array<Int> = new Array<Int>();
 	public static var buttonTimeList : Array<FlxButton> = new Array<FlxButton>();
-	public static var minute : Int = 30;
-	public static var hour : Int = 7;
+
 	var dropDownButton : FlxButton;
 	var down : Bool;
 	var ui : UI;	
 	var clickedButton : Int;
+
 	
 	
 	public function new(newStart : Bool) 
@@ -51,6 +53,7 @@ class MainGame extends FlxState
 		dropDownButton.scale.y = 2.5;
 		add(dropDownButton);
 		
+		FlxG.sound.playMusic("assets/music/menuMusic.mp3", 1, true);
 		
 		
 		
@@ -102,7 +105,7 @@ class MainGame extends FlxState
 		{
 			startEatingMini(timeList[time]);
 		}
-		else if (taskList[clickedButton] == "slapen")
+		else if (taskList[clickedButton] == "Slapen")
 		{
 			startSleepingMini();
 		}
@@ -110,7 +113,7 @@ class MainGame extends FlxState
 		remove(buttonList[clickedButton]);
 		dropDown();
 		
-		minute += timeList[time];
+		TempDataStorage.minute += timeList[time];
 		
 		for (i in 0...buttonTimeList.length)
 		{
@@ -121,14 +124,15 @@ class MainGame extends FlxState
 	
 	public function startSleepingMini() 
 	{
-		var i : Int = Std.random(3);
+		var i : Int = Std.random(2);
 		
 		switch(i)
 		{
 			case 0:
+				FlxG.sound.destroy(true);
 				FlxG.switchState(new MidEavleMini());
 			case 1:
-				FlxG.switchState(new MenuState());
+				FlxG.switchState(new StoneAgeMini());
 			case 2:
 				FlxG.switchState(new MenuState());
 		}
@@ -136,44 +140,47 @@ class MainGame extends FlxState
 	
 	public function startEatingMini(time : Int) 
 	{
+		FlxG.sound.destroy(true);
 		FlxG.switchState(new MainMiniState(time));
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
+		super.update(elapsed);
+		
 		//internal time clock
-		if (minute >= 60)
+		if (TempDataStorage.minute >= 60)
 		{
-			hour++;
-			minute -= 60;
+			TempDataStorage.hour++;
+			TempDataStorage.minute -= 60;
 		}
-		if (minute >= 120)
+		if (TempDataStorage.minute >= 120)
 		{
-			hour++;
-			minute -= 120;
+			TempDataStorage.hour++;
+			TempDataStorage.minute -= 120;
 		}
-		if (minute >= 180)
+		if (TempDataStorage.minute >= 180)
 		{
-			hour++;
-			minute -= 180;
+			TempDataStorage.hour++;
+			TempDataStorage.minute -= 180;
 		}
 		
-		if (hour == 13)
+		if (TempDataStorage.hour == 13)
 		{
-			if (dagDeel == "s'Ochtends")
+			if (TempDataStorage.dagDeel == "s'Ochtends")
 			{
-				dagDeel = "s'Middags";
+				TempDataStorage.dagDeel = "s'Middags";
 			}
 			else
 			{
-				dagDeel = "s'Ochtends";
+				TempDataStorage.dagDeel = "s'Ochtends";
 			}
-			hour = 1;
+			TempDataStorage.hour = 1;
 		}
 		// don't touch the above
 		var updateFiller : TaskListFiller = new TaskListFiller(false);
 		
-		super.update(elapsed);
+		
 	}
 	
 }

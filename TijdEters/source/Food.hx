@@ -19,7 +19,6 @@ class Food extends FlxSprite
 	public function new(X:Float, Y:Float, foodType : Int, gameType:Int, speed : Int) 
 	{
 		super(X, Y);
-		
 		this.velocity.y = speed;
 		typeObject = foodType;
 		typeGame = gameType;
@@ -103,7 +102,7 @@ class Food extends FlxSprite
 	
 	override public function update(elapsed:Float):Void 
 	{
-
+		super.update(elapsed);
 		
 		switch(typeObject) 
 		{
@@ -126,12 +125,12 @@ class Food extends FlxSprite
 				this.destroy();
 			}
 			
-		super.update(elapsed);
+		
 	}
 	
 	public function badCol(food : FlxObject, player:FlxObject) 
 	{
-		if (typeObject == 2)
+		if (typeGame == 1)
 		{
 			Player.timer -= 5.0;
 			this.destroy();
@@ -144,9 +143,13 @@ class Food extends FlxSprite
 	
 	public function goodCol(food : FlxObject, player:FlxObject) 
 	{
-		Player.score++;
-		UI.hungerInt -= 0.5;
-		this.destroy();
+		if (food.y < player.y)
+		{
+			Player.score++;
+			UI.hungerInt -= 0.5;
+			this.destroy();
+			//("collided");
+		}
 	}
 	
 }

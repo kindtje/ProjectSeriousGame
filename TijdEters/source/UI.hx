@@ -27,10 +27,12 @@ class UI extends FlxObject
 	public static var hungerInt : Float = 50;
 	
 	var seeScore : Bool;
+	var type : String;
 	
 	public function new(X:Float, Y:Float, UIType:String) 
 	{
 		super(X, Y);
+		type = UIType;
 		
 		switch(UIType)
 		{
@@ -39,7 +41,7 @@ class UI extends FlxObject
 				showScore.text = "Score: " + Player.score;
 				showScore.size = 15;
 				
-				showTime = new FlxText(FlxG.stage.stageWidth - 100);
+				showTime = new FlxText(FlxG.stage.stageWidth - 300);
 				showTime.text = "Tijd: " + Std.int(Player.timer);
 				showTime.size = 15;
 				
@@ -47,7 +49,7 @@ class UI extends FlxObject
 				
 			case "maingame":
 				tempTime = new FlxText(FlxG.stage.stageWidth / 2, 10);
-				tempTime.text = MainGame.dagDeel + ": " + MainGame.hour + "." + MainGame.minute;
+				tempTime.text = TempDataStorage.dagDeel + ": " + TempDataStorage.hour + "." + TempDataStorage.minute;
 				tempTime.size = 15;
 				
 				/*hunger = new FlxText(200, 10);
@@ -65,6 +67,17 @@ class UI extends FlxObject
 				_sleep.makeGraphic(Std.int(sleepInt), 10, 0xFF8000FF);*/
 				
 				seeScore = false;
+				
+			case "stonemini":
+				showScore = new FlxText(10, 10);
+				showScore.text = "Score: " + StoneAgeMini.stoneScore;
+				showScore.size = 15;
+				
+				showTime = new FlxText(FlxG.stage.stageWidth - 300);
+				showTime.text = "Tijd: " + Std.int(StoneAgeMini.stoneTimer);
+				showTime.size = 15;
+				
+				seeScore = true;
 		}
 	}
 	
@@ -72,12 +85,21 @@ class UI extends FlxObject
 	{
 		if (seeScore)
 		{
-			showScore.text = "Score: " + Player.score;
-			showTime.text = "Tijd: " + Std.int(Player.timer);
+			switch(type)
+			{
+				case "minigame":
+					showScore.text = "Score: " + Player.score;
+					showTime.text = "Tijd: " + Std.int(Player.timer);
+				
+				case "stonemini":
+					showScore.text = "Score: " + StoneAgeMini.stoneScore;
+					showTime.text = "Tijd: " + Std.int(StoneAgeMini.stoneTimer);
+				
+			}
 		}
 		else
 		{
-			tempTime.text = MainGame.dagDeel + ": " + MainGame.hour + "." + MainGame.minute;
+			tempTime.text = TempDataStorage.dagDeel + ": " + TempDataStorage.hour + "." + TempDataStorage.minute;
 			/*_hunger.makeGraphic(Std.int(hungerInt), 10, 0xFF8000FF);
 			_sleep.makeGraphic(Std.int(sleepInt), 10, 0xFF8000FF);*/
 		}

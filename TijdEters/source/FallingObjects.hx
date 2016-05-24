@@ -4,6 +4,8 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxTween;
+import lime.math.Vector2;
 
 /**
  * ...
@@ -16,12 +18,13 @@ class FallingObjects extends FlxObject
 	
 	var amountRows : Int = 7;
 	var interval : Float = 0;
-	var maxInterval : Float = 2;
+	var maxInterval : Float = 1;
 	var chance : Int = 55;
 	var typeGame : Int;
 	var speedFood : Int;
 	
 	var lastSpot : Float;
+
 	
 	public function new(X:Float=0, Y:Float= 0, gameType :Int, fallingObject :FlxTypedGroup<Food>, foodSpeed : Int ) 
 	{
@@ -75,13 +78,12 @@ class FallingObjects extends FlxObject
 			}
 			
 			var newObject = new Food(fallingSpots[spot], -10, type, typeGame, speedFood);
-				fallingFood.add(newObject);
+			fallingFood.add(newObject);
 			lastSpot = fallingSpots[spot];
-				maxInterval -= 0.02;
+			maxInterval -= 0.0001;
 			interval = 0;
 		}
 		
 		super.update(elapsed);
 	}
-	
 }

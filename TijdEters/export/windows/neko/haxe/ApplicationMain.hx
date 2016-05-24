@@ -58,7 +58,7 @@ class ApplicationMain {
 				#if mobile
 				
 				forceWidth = 1280;
-				forceHeight = 960;
+				forceHeight = 720;
 				
 				container = new flash.display.Sprite ();
 				barA = new flash.display.Sprite ();
@@ -127,7 +127,7 @@ class ApplicationMain {
 				}
 				
 			},
-			1280, 960, 
+			1280, 720, 
 			60, 
 			0,
 			(true ? flash.Lib.HARDWARE : 0) |
@@ -138,7 +138,7 @@ class ApplicationMain {
 			(true ? flash.Lib.RESIZABLE : 0) |
 			(false ? flash.Lib.BORDERLESS : 0) |
 			(true ? flash.Lib.VSYNC : 0) |
-			(false ? flash.Lib.FULLSCREEN : 0) |
+			(true ? flash.Lib.FULLSCREEN : 0) |
 			(0 == 4 ? flash.Lib.HW_AA_HIRES : 0) |
 			(0 == 2 ? flash.Lib.HW_AA : 0),
 			"TijdEters",
@@ -248,7 +248,7 @@ class ScaledStage extends flash.display.Stage {
 	
 	private override function get_stageHeight ():Int {
 		
-		return 960;
+		return 720;
 	
 	}
 	
@@ -325,11 +325,11 @@ class ApplicationMain {
 		wx.App.boot (function () {
 			
 			
-			frame = wx.Frame.create (null, null, "TijdEters", null, { width: 1280, height: 960 });
+			frame = wx.Frame.create (null, null, "TijdEters", null, { width: 1280, height: 720 });
 			
 			
 			#if openfl
-			var stage = wx.NMEStage.create (frame, null, null, { width: 1280, height: 960 });
+			var stage = wx.NMEStage.create (frame, null, null, { width: 1280, height: 720 });
 			#end
 			
 			var hasMain = false;
@@ -511,7 +511,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "295",
+			build: "500",
 			company: "HaxeFlixel",
 			file: "TijdEters",
 			fps: 60,
@@ -527,9 +527,9 @@ class ApplicationMain {
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
-					fullscreen: false,
+					fullscreen: true,
 					hardware: true,
-					height: 960,
+					height: 720,
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: false,
@@ -545,7 +545,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 1280, 960, "null");
+		openfl.Lib.embed (null, 1280, 720, "null");
 		#end
 		#else
 		create ();

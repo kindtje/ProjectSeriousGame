@@ -62,12 +62,14 @@ class MainMiniState extends FlxState
 	
 	override public function update(elapsed:Float):Void 
 	{
+		super.update(elapsed);
+		
 		if (Player.timer == 0)
 		{
 			FlxG.switchState(new MiniGameEnd());
 		}
 		
-		super.update(elapsed);
+		
 	}
 	
 }

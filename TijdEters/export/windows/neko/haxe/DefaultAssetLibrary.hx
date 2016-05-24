@@ -71,6 +71,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__flixel_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__flixel_fonts_monsterrat_ttf);
 		
@@ -79,6 +91,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -604,6 +628,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -616,16 +652,34 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/images/apple.png", "assets/images/apple.png");
 		type.set ("assets/images/apple.png", AssetType.IMAGE);
+		path.set ("assets/images/Background Medieval.png", "assets/images/Background Medieval.png");
+		type.set ("assets/images/Background Medieval.png", AssetType.IMAGE);
+		path.set ("assets/images/Background Roman.png", "assets/images/Background Roman.png");
+		type.set ("assets/images/Background Roman.png", AssetType.IMAGE);
+		path.set ("assets/images/BackgroundBerries.png", "assets/images/BackgroundBerries.png");
+		type.set ("assets/images/BackgroundBerries.png", AssetType.IMAGE);
 		path.set ("assets/images/basket.png", "assets/images/basket.png");
 		type.set ("assets/images/basket.png", AssetType.IMAGE);
 		path.set ("assets/images/bomb.png", "assets/images/bomb.png");
 		type.set ("assets/images/bomb.png", AssetType.IMAGE);
+		path.set ("assets/images/broccoli.png", "assets/images/broccoli.png");
+		type.set ("assets/images/broccoli.png", AssetType.IMAGE);
 		path.set ("assets/images/chicken.png", "assets/images/chicken.png");
 		type.set ("assets/images/chicken.png", AssetType.IMAGE);
 		path.set ("assets/images/cow.png", "assets/images/cow.png");
 		type.set ("assets/images/cow.png", AssetType.IMAGE);
+		path.set ("assets/images/hamburger.png", "assets/images/hamburger.png");
+		type.set ("assets/images/hamburger.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		path.set ("assets/images/temp_berrie1.png", "assets/images/temp_berrie1.png");
+		type.set ("assets/images/temp_berrie1.png", AssetType.IMAGE);
+		path.set ("assets/images/temp_berrie2.png", "assets/images/temp_berrie2.png");
+		type.set ("assets/images/temp_berrie2.png", AssetType.IMAGE);
+		path.set ("assets/images/temp_berrie3.png", "assets/images/temp_berrie3.png");
+		type.set ("assets/images/temp_berrie3.png", AssetType.IMAGE);
+		path.set ("assets/images/temp_berrie4.png", "assets/images/temp_berrie4.png");
+		type.set ("assets/images/temp_berrie4.png", AssetType.IMAGE);
 		path.set ("assets/images/temp_bomb.png", "assets/images/temp_bomb.png");
 		type.set ("assets/images/temp_bomb.png", AssetType.IMAGE);
 		path.set ("assets/images/temp_char.png", "assets/images/temp_char.png");
@@ -634,6 +688,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/temp_food.png", AssetType.IMAGE);
 		path.set ("assets/images/temp_mand.png", "assets/images/temp_mand.png");
 		type.set ("assets/images/temp_mand.png", AssetType.IMAGE);
+		path.set ("assets/images/watermelon.png", "assets/images/watermelon.png");
+		type.set ("assets/images/watermelon.png", AssetType.IMAGE);
+		path.set ("assets/music/menuMusic.mp3", "assets/music/menuMusic.mp3");
+		type.set ("assets/music/menuMusic.mp3", AssetType.MUSIC);
+		path.set ("assets/music/menuMusic.wav", "assets/music/menuMusic.wav");
+		type.set ("assets/music/menuMusic.wav", AssetType.SOUND);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
@@ -659,10 +719,22 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/apple.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Background Medieval.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Background Roman.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/BackgroundBerries.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/basket.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/bomb.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/broccoli.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/chicken.png";
@@ -671,9 +743,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/cow.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/hamburger.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/temp_berrie1.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/temp_berrie2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/temp_berrie3.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/temp_berrie4.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/temp_bomb.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -686,6 +773,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/temp_mand.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/watermelon.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/music/menuMusic.mp3";
+		path.set (id, id);
+		type.set (id, AssetType.MUSIC);
+		id = "assets/music/menuMusic.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -729,6 +825,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1488,6 +1596,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
@@ -1496,6 +1616,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

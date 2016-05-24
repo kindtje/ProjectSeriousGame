@@ -17,6 +17,7 @@ class TaskListFiller extends FlxObject
 			MainGame.taskList.push("Zelf Verzorging");
 			MainGame.taskList.push("Spelen");
 			MainGame.taskList.push("Opruimen");
+			MainGame.taskList.push("Slapen");
 			
 			MainGame.timeList.push(15);
 			MainGame.timeList.push(30);
@@ -29,7 +30,7 @@ class TaskListFiller extends FlxObject
 	
 	override public function update(elapsed:Float):Void 
 	{
-		if ((MainGame.dagDeel == "s'Middags" && MainGame.hour < 2) || (MainGame.dagDeel == "s'Ochtends" && MainGame.hour > 9))
+		if ((TempDataStorage.dagDeel == "s'Middags" && TempDataStorage.hour < 2) || (TempDataStorage.dagDeel == "s'Ochtends" && TempDataStorage.hour > 9))
 		{
 			for (i in 0...MainGame.taskList.length)
 			{
@@ -41,12 +42,12 @@ class TaskListFiller extends FlxObject
 			MainGame.taskList.push("Lunchen");
 		}
 		
-		if (MainGame.dagDeel == "s'Middags" && MainGame.hour > 6 && MainGame.hour < 8)
+		if (TempDataStorage.dagDeel == "s'Middags" && TempDataStorage.hour > 6 && TempDataStorage.hour < 8)
 		{
 			MainGame.taskList.push("Avond Eten");
 		}
 		
-		if (MainGame.dagDeel == "s'Middags" && MainGame.hour > 8)
+		if (TempDataStorage.dagDeel == "s'Middags" && TempDataStorage.hour > 8)
 		{
 			MainGame.taskList.push("Slapen");
 		}

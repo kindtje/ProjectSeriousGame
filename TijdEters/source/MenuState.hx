@@ -20,7 +20,14 @@ class MenuState extends FlxState
 		add(new FlxButton(155, 110, "Main game", GoMain));
 		add(new FlxButton(155, 130, "Main mini game", goMainMini));
 		add(new FlxButton(155, 150, "Mideavle mini game", GoMidEavle));
+		add(new FlxButton(155, 170, "StoneAge mini game", goStoneAge));
+		add(new FlxButton(155, 190, "Roman Empire mini game", goRoman));
 		
+	}
+	
+	public function goStoneAge() 
+	{
+		FlxG.switchState(new StoneAgeMini());
 	}
 	
 	public function GoMain() 
@@ -36,6 +43,11 @@ class MenuState extends FlxState
 	function GoMidEavle()
 	{
 		FlxG.switchState(new MidEavleMini());
+	}
+	
+	function goRoman()
+	{
+		FlxG.switchState(new RomanMini());
 	}
 	
 	override public function update(elapsed:Float):Void

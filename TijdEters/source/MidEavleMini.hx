@@ -26,6 +26,11 @@ class MidEavleMini extends FlxState
 	{
 		super.create();
 		
+		var bg:FlxSprite = new FlxSprite(0, -250);
+        bg.loadGraphic("assets/images/Background Medieval.png");
+		bg.scale.x = 1.1;
+		add(bg);
+		
 		player = new Player(300, 400, 2, 50);
 			add(player);
 			add(player.player);
