@@ -13,16 +13,20 @@ class MiniGameEnd extends FlxState
 {
 	public var showScore:FlxText;
 	public var backButton:FlxButton;
+	var getScore :Int;
 	
-	public function new() 
+	public function new(score : Int) 
 	{
 		super();
+		getScore = score;
+		Player.score = 0;
+		StoneAgeMini.stoneScore = 0;
 	}
 	
 	override public function create():Void 
 	{
 				showScore = new FlxText(FlxG.stage.stageWidth / 2, 200);
-				showScore.text = "Score: " + Std.int(Player.score);
+				showScore.text = "Score: " + Std.int(getScore);
 				showScore.size = 15;
 				add(showScore);
 				

@@ -27,11 +27,11 @@ class MidEavleMini extends FlxState
 		super.create();
 		
 		var bg:FlxSprite = new FlxSprite(0, -250);
-        bg.loadGraphic("assets/images/Background Medieval.png");
+        bg.loadGraphic("assets/images/Background_Medieval.png");
 		bg.scale.x = 1.1;
 		add(bg);
 		
-		player = new Player(300, 400, 2, 50);
+		player = new Player(300, FlxG.stage.stageHeight, 2, 50);
 			add(player);
 			add(player.player);
 			add(Player.basket);
@@ -40,7 +40,7 @@ class MidEavleMini extends FlxState
 			add(food);	
 
 			
-		falling = new FallingObjects(0, 0, 2, food, 150);
+		falling = new FallingObjects(0, 0, 2, food, 150, null);
 			add(falling);
 			
 		ui = new UI(0, 0, "minigame");
@@ -53,7 +53,7 @@ class MidEavleMini extends FlxState
 	{
 		if (Player.timer == 0 || dead)
 		{
-			FlxG.switchState(new MiniGameEnd());
+			FlxG.switchState(new MiniGameEnd(Player.score));
 		}
 		
 		super.update(elapsed);

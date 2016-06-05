@@ -38,6 +38,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/Background Berries.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/Background Medieval.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -46,7 +50,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/BackgroundBerries.png");
+		urls.push ("assets/images/Background_Medieval.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Background_Roman.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -94,8 +102,20 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/hand cursor.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/images-go-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/meat .png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/ModernBackground.png");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/temp_arrow.png");
@@ -110,11 +130,27 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/temp_hand.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/temp_sheep.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/temp_wolf.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/watermelon.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/white berry.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/wool.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -215,7 +251,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "574",
+			build: "727",
 			company: "HaxeFlixel",
 			file: "TijdEters",
 			fps: 60,

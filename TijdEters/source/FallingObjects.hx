@@ -1,5 +1,6 @@
 package;
 
+import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -15,6 +16,7 @@ class FallingObjects extends FlxObject
 {
 	var fallingSpots : Array<Float> = new Array<Float>();
 	var fallingFood : FlxTypedGroup<Food>;
+	var explosion :FlxTypedGroup<FlxEmitter>;
 	
 	var amountRows : Int = 7;
 	var interval : Float = 0;
@@ -26,11 +28,12 @@ class FallingObjects extends FlxObject
 	var lastSpot : Float;
 
 	
-	public function new(X:Float=0, Y:Float= 0, gameType :Int, fallingObject :FlxTypedGroup<Food>, foodSpeed : Int ) 
+	public function new(X:Float=0, Y:Float= 0, gameType :Int, fallingObject :FlxTypedGroup<Food>, foodSpeed : Int, _explosion :FlxTypedGroup<FlxEmitter> ) 
 	{
 		super(X, Y);
 		
 		fallingFood = fallingObject;
+		explosion = _explosion;
 		speedFood = foodSpeed;
 		typeGame = gameType;
 		
@@ -41,7 +44,6 @@ class FallingObjects extends FlxObject
 		for (place in 1...(amountRows + 1))
 		{
 			var spot = place * rowWidth + rowPlace;
-			trace(spot);
 			
 			fallingSpots.push(spot);
 		}
@@ -51,6 +53,8 @@ class FallingObjects extends FlxObject
 	
 	override public function update(elapsed:Float):Void 
 	{
+		super.update(elapsed);
+		
 		interval += FlxG.elapsed;
 		if (interval > maxInterval)
 		{
@@ -77,13 +81,13 @@ class FallingObjects extends FlxObject
 				chance = 55;
 			}
 			
-			var newObject = new Food(fallingSpots[spot], -10, type, typeGame, speedFood);
+			var newObject = new Food(fallingSpots[spot], -100, type, typeGame, speedFood, explosion);
 			fallingFood.add(newObject);
 			lastSpot = fallingSpots[spot];
 			maxInterval -= 0.0001;
 			interval = 0;
 		}
 		
-		super.update(elapsed);
+		
 	}
 }

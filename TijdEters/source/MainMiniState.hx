@@ -1,5 +1,6 @@
 package;
 
+import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -41,16 +42,25 @@ class MainMiniState extends FlxState
 	{
 		super.create();
 		
-		player = new Player(300, 400, 1, tempTime);
+		var bg:FlxSprite = new FlxSprite(0, -100);
+        bg.loadGraphic("assets/images/ModernBackground.png");
+		bg.scale.x = 1.1;
+			add(bg);
+			
+			
+		player = new Player(300, FlxG.stage.stageHeight, 1, tempTime);
 			add(player);
 			add(player.player);
 			add(Player.basket);
 		
 		var food = new FlxTypedGroup<Food>();
-			add(food);	
+			add(food);
+		
+		var explosion = new FlxTypedGroup<FlxEmitter>();
+			add(explosion);
 		
 			
-		falling = new FallingObjects(0, 0, 1, food, foodSpeed);
+		falling = new FallingObjects(0, 0, 1, food, foodSpeed, explosion);
 			add(falling);
 			
 		ui = new UI(0, 0, "minigame");
@@ -66,7 +76,7 @@ class MainMiniState extends FlxState
 		
 		if (Player.timer == 0)
 		{
-			FlxG.switchState(new MiniGameEnd());
+			FlxG.switchState(new MiniGameEnd(Player.score));
 		}
 		
 		

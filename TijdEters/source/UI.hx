@@ -24,7 +24,7 @@ class UI extends FlxObject
 	public var maxHunger: FlxSprite;
 	
 	public static var sleepInt : Float = 0;
-	public static var hungerInt : Float = 50;
+	public static var hungerInt : Float = 0;
 	
 	var seeScore : Bool;
 	var type : String;
@@ -52,7 +52,7 @@ class UI extends FlxObject
 				tempTime.text = TempDataStorage.dagDeel + ": " + TempDataStorage.hour + "." + TempDataStorage.minute;
 				tempTime.size = 15;
 				
-				/*hunger = new FlxText(200, 10);
+				hunger = new FlxText(200, 10);
 				hunger.text = "Honger: ";
 				maxHunger = new FlxSprite(hunger.x + hunger.width + 4, 10);
 				maxHunger.makeGraphic(50, 10, 0xFFC0C0C0);
@@ -64,7 +64,7 @@ class UI extends FlxObject
 				maxSleep = new FlxSprite(sleep.x + sleep.width + 4, 10);
 				maxSleep.makeGraphic(50, 10, 0xFFC0C0C0);
 				_sleep = new FlxSprite(sleep.x + sleep.width + 4, 10);
-				_sleep.makeGraphic(Std.int(sleepInt), 10, 0xFF8000FF);*/
+				_sleep.makeGraphic(Std.int(sleepInt), 10, 0xFF8000FF);
 				
 				seeScore = false;
 				
@@ -83,6 +83,8 @@ class UI extends FlxObject
 	
 	override public function update(elapsed:Float):Void 
 	{
+		super.update(elapsed);
+		
 		if (seeScore)
 		{
 			switch(type)
@@ -100,11 +102,18 @@ class UI extends FlxObject
 		else
 		{
 			tempTime.text = TempDataStorage.dagDeel + ": " + TempDataStorage.hour + "." + TempDataStorage.minute;
-			/*_hunger.makeGraphic(Std.int(hungerInt), 10, 0xFF8000FF);
-			_sleep.makeGraphic(Std.int(sleepInt), 10, 0xFF8000FF);*/
+			if (hungerInt <= 0)
+			{
+				_hunger.makeGraphic(0, 10, 0xFF8000FF);
+			}
+			else
+			{
+				_hunger.makeGraphic(Std.int(hungerInt), 10, 0xFF8000FF);
+			}
+			_sleep.makeGraphic(Std.int(sleepInt), 10, 0xFF8000FF);
 		}
 			
-		super.update(elapsed);
+		
 	}
 	
 }

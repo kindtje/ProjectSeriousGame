@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.math.FlxPoint;
 
 /**
  * ...
@@ -20,6 +21,8 @@ class StoneAgeMini extends FlxState
 	public static var stoneTimer : Float = 50;
 	var ui : UI;
 	
+	var lastSpots : List<FlxPoint>;
+	
 	public function new() 
 	{
 		super();
@@ -33,7 +36,7 @@ class StoneAgeMini extends FlxState
 		super.create();
 		
 		var bg:FlxSprite = new FlxSprite(0, -250);
-        bg.loadGraphic("assets/images/BackgroundBerries.png");
+        bg.loadGraphic("assets/images/Background Berries.png");
 		bg.scale.x = 1.1;
 		add(bg);
 		
@@ -47,10 +50,15 @@ class StoneAgeMini extends FlxState
 		berryBad.scale.y = 0.2;
 		berryBad.updateHitbox();
 		add(berryBad);
+		
+		var handSprite = new FlxSprite(0, 0, "assets/images/hand cursor.png");
+		FlxG.mouse.load(handSprite.pixels);
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
+		super.update(elapsed);
+		
 		stoneTimer -= FlxG.elapsed;
 		
 		interval += FlxG.elapsed;
@@ -74,7 +82,12 @@ class StoneAgeMini extends FlxState
 			interval = 0;
 			j++;
 		}
-		super.update(elapsed);
+		
+		if (stoneTimer <= 0)
+		{
+			FlxG.mouse.unload();
+			FlxG.switchState(new MiniGameEnd(stoneScore));
+		}
 	}
 	
 	public function onClick(berry : Int)

@@ -4,6 +4,8 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.effects.particles.FlxEmitter;
+import flixel.util.FlxColor;
 
 /**
  * ...
@@ -11,14 +13,19 @@ import flixel.group.FlxGroup.FlxTypedGroup;
  */
 class Food extends FlxSprite
 {
-	
+	var explosionGroup :FlxTypedGroup<FlxEmitter>;
 	public var foodObject : FlxSprite;
 	var typeObject : Int;
 	var typeGame : Int;
+	public var explosion : FlxEmitter;
 	
-	public function new(X:Float, Y:Float, foodType : Int, gameType:Int, speed : Int) 
+	public function new(X:Float, Y:Float, foodType : Int, gameType:Int, speed : Int, _explosion :FlxTypedGroup<FlxEmitter>) 
 	{
 		super(X, Y);
+		if (!null)
+		{
+			explosionGroup = _explosion;
+		}
 		this.velocity.y = speed;
 		typeObject = foodType;
 		typeGame = gameType;
@@ -98,6 +105,9 @@ class Food extends FlxSprite
 				}
 		}
 		
+		explosion = new FlxEmitter();
+		explosion.makeParticles(20, 20, FlxColor.RED, 20);
+		
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -112,15 +122,23 @@ class Food extends FlxSprite
 			case 2:
 				FlxG.overlap(this, Player.basket, badCol);
 				
-				if (this.y > 480 && !Player.duck && typeGame == 1)
+				if (this.y > FlxG.stage.stageHeight)
 				{
-					Player.score--;
+					if (!Player.duck && typeGame == 1)
+					{
+						Player.score--;
+					}
+					explosion.x = this.x;
+					explosion.y = FlxG.stage.stageHeight;
+					explosion.start(true);
+					explosion.update(elapsed);
+					explosionGroup.add(explosion);
 					this.destroy();
 				}
 
 		}
 		
-		if (this.y > 480)
+		if (this.y > FlxG.stage.stageHeight)
 			{
 				this.destroy();
 			}
@@ -146,9 +164,9 @@ class Food extends FlxSprite
 		if (food.y < player.y)
 		{
 			Player.score++;
-			UI.hungerInt -= 0.5;
+			UI.hungerInt -= 1;
 			this.destroy();
-			//("collided");
+			
 		}
 	}
 	
